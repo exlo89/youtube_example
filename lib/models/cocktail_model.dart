@@ -26,10 +26,8 @@ class CocktailModel {
     "strCategory": strCategory,
     "strDrink": strDrink,
   };
+  @override
+  String toString() {
+    return strDrink ?? super.toString();
+  }
 }
-
-List<CocktailModel> exampleCocktails = [
-  CocktailModel(strDrink: 'Sex On The Beach',strCategory: 'Cocktail'),
-  CocktailModel(strDrink: '501 Blue',strCategory: 'Gewöhnliches Getränk'),
-  CocktailModel(strDrink: 'Dry Martini',strCategory: 'Cocktail'),
-];

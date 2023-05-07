@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:youtube/screens/home.dart';
+import 'package:youtube/screens/home_bloc_screen.dart';
+import 'package:youtube/screens/home_riverpod_screen.dart';
+import 'package:youtube/screens/home_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -12,9 +14,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        Home.routeName: (context) => const Home(),
+        HomeBlocScreen.routeName: (context) => const HomeBlocScreen(),
+        HomeRiverpodScreen.routeName: (context) => const HomeRiverpodScreen(),
       },
-      initialRoute: Home.routeName,
+      home: const HomeScreen()
     );
   }
 }

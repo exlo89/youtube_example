@@ -3,16 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:youtube/bloc/home/home_bloc.dart';
 import 'package:youtube/models/cocktail_model.dart';
 
-class Home extends StatefulWidget {
-  static const String routeName = 'home';
+class HomeBlocScreen extends StatefulWidget {
+  static const String routeName = 'home-bloc';
 
-  const Home({super.key});
+  const HomeBlocScreen({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<HomeBlocScreen> createState() => _HomeBlocScreenState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeBlocScreenState extends State<HomeBlocScreen> {
   late HomeBloc _homeBloc;
 
   @override
@@ -52,19 +52,24 @@ class _HomeState extends State<Home> {
                 builder: (context, state) {
                   if (state is HomeInProgressState) {
                     return const Expanded(
-                        child: Center(child: CircularProgressIndicator()));
+                      child: Center(child: CircularProgressIndicator()),
+                    );
                   }
                   if (state is HomeSuccessState) {
-                    return Column(
-                      children: List<Widget>.generate(
-                        state.cocktails.length,
-                        (index) {
-                          CocktailModel cocktail = state.cocktails[index];
-                          return ListTile(
-                            title: Text(cocktail.strDrink.toString()),
-                            subtitle: Text(cocktail.strCategory.toString()),
-                          );
-                        },
+                    return Flexible(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: List<Widget>.generate(
+                            state.cocktails.length,
+                            (index) {
+                              CocktailModel cocktail = state.cocktails[index];
+                              return ListTile(
+                                title: Text(cocktail.strDrink.toString()),
+                                subtitle: Text(cocktail.strCategory.toString()),
+                              );
+                            },
+                          ),
+                        ),
                       ),
                     );
                   }
