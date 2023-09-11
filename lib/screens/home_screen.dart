@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:youtube/screens/home_bloc_screen.dart';
+import 'package:youtube/screens/home_isar_screen.dart';
 import 'package:youtube/screens/home_riverpod_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -27,6 +28,12 @@ class HomeScreen extends StatelessWidget {
                 Navigator.of(context).pushNamed(HomeRiverpodScreen.routeName);
               },
               child: const Text('Riverpod'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(HomeIsarScreen.routeName);
+              },
+              child: const Text('Isar'),
             ),
           ],
         ),
